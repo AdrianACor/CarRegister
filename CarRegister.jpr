@@ -110,7 +110,7 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="CarRegister">
+         <hash n="CarRegisterDeploy">
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
                <value n="mainClass" v="Car.Principal"/>
@@ -140,13 +140,13 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/CarRegister.jar"/>
+            <url n="jarURL" path="deploy/CarRegisterDeploy.jar"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ArchiveProfile"/>
-            <value n="profileName" v="CarRegister"/>
+            <value n="profileName" v="CarRegisterDeploy"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="CarRegister"/>
+         <string v="CarRegisterDeploy"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
