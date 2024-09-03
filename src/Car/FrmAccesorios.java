@@ -18,8 +18,7 @@ import javax.swing.JOptionPane;
  * @author vacio
  */
 public class FrmAccesorios extends javax.swing.JFrame {
-    Conexion conn = new Conexion();
-    Connection conect;
+    Connection conectar = Conexion.Conectar();
     Statement st;
     String Placas;
     int idCliente;
@@ -31,7 +30,6 @@ public class FrmAccesorios extends javax.swing.JFrame {
         this.idCliente = idCliente;
         Image icon = new ImageIcon(getClass().getResource("/resources/CabrioletRed-4.png")).getImage();
         setIconImage(icon);
-        /* ConsultaAccesorios(2); */
         txtPlacas.setText(Placas);
     }
 
@@ -296,12 +294,12 @@ public class FrmAccesorios extends javax.swing.JFrame {
         String query = "Select * from accesorios where Placas = '"+placas+"'";
         
         try {
-            conect = conn.getConnection();
-            st = conect.createStatement();
-            ResultSet rs = st.executeQuery(query);
             
+            st = conectar.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            txtPlacas.setText(placas);
             while(rs.next()){
-                txtPlacas.setText(rs.getString(1));
+                
                 if(rs.getInt(3) == 1){
                     chkEstereo.setSelected(true);
                 }else{
@@ -347,17 +345,14 @@ public class FrmAccesorios extends javax.swing.JFrame {
     
     public void  UpdateAccesorios(String Placas,int clienteID, int Estereo, int Baston, int Llave, int Gato, 
                                        int llanta, int Caja, String Otros){
-        /* JOptionPane.showMessageDialog(null,"Placas: "+Placas+" clienteID: "+clienteID+" Estereo: "+ Estereo+" Baston: "+Baston+" Llave: "+  Llave+
-                           " Gato: "+Gato+" Llanta: "+llanta+" Caja: "+Caja+" Otros: "+Otros); */
         String query = "UPDATE accesorios set Estereo = "+Estereo+",Llave_Cruz = "+Llave+",Gato = "+Gato+",Refaccion = "+llanta+
                         ",Caja_Herramientas = "+Caja+",Baston_Seguridad = "+Baston+",Otros = '"+Otros+"' Where Placas = '"+Placas+
                         "' AND idCliente = "+idCliente+";";
         try{
-            conect = conn.getConnection();
-            st = conect.createStatement();
+            
+            st = conectar.createStatement();
    
             st.executeUpdate(query);
-            st.close();
             
             JOptionPane.showMessageDialog(this,"Accesorios actualizados");
         }catch(Exception e){
@@ -367,17 +362,14 @@ public class FrmAccesorios extends javax.swing.JFrame {
     
     public void insertAccesorios(String Placas,int clienteID, int Estereo, int Baston, int Llave, int Gato, 
                                        int llanta, int Caja, String Otros){
-        /* JOptionPane.showMessageDialog(null,"Placas: "+Placas+" clienteID: "+clienteID+" Estereo: "+ Estereo+" Baston: "+Baston+" Llave: "+  Llave+
-                           " Gato: "+Gato+" Llanta: "+llanta+" Caja: "+Caja+" Otros: "+Otros); */
         String query = "INSERT INTO accesorios(Placas,idCliente,Estereo,Llave_Cruz,Gato,Refaccion,Caja_Herramientas," +
                                     "Baston_Seguridad,Otros) VALUES('"+Placas+"',"+clienteID+","+Estereo+","+Llave+","+Gato+","+
-                                                                    llanta+","+Caja+",'"+Otros+"');";
+                                                                    llanta+","+Caja+","+Baston+",'"+Otros+"');";
 
         try {
-            conect = conn.getConnection();
-            conect.prepareStatement(query);
+            
+            conectar.prepareStatement(query);
             st.executeUpdate(query);
-            st.close();
             
             JOptionPane.showMessageDialog(this,"Accesorios registrados");
         }catch(Exception e){

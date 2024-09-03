@@ -109,45 +109,8 @@
       <value n="webIANAEncoding" v="windows-1252"/>
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
-      <hash n="profileDefinitions">
-         <hash n="CarRegisterDeploy">
-            <hash n="archiveOptions">
-               <value n="hasManifest" v="true"/>
-               <value n="mainClass" v="Car.Principal"/>
-            </hash>
-            <hash n="fileGroups">
-               <list n="groups">
-                  <hash>
-                     <list n="contributors">
-                        <hash>
-                           <value n="type" v="2"/>
-                        </hash>
-                        <hash>
-                           <value n="type" v="7"/>
-                        </hash>
-                     </list>
-                     <value n="displayName" v="Project Output"/>
-                     <hash n="filters">
-                        <list n="rules">
-                           <hash>
-                              <value n="pattern" v="**"/>
-                              <value n="type" v="0"/>
-                           </hash>
-                        </list>
-                     </hash>
-                     <value n="internalName" v="project-output"/>
-                     <value n="type" v="1"/>
-                  </hash>
-               </list>
-            </hash>
-            <url n="jarURL" path="deploy/CarRegisterDeploy.jar"/>
-            <value n="profileClass" v="oracle.jdeveloper.deploy.jar.ArchiveProfile"/>
-            <value n="profileName" v="CarRegisterDeploy"/>
-         </hash>
-      </hash>
-      <list n="profileList">
-         <string v="CarRegisterDeploy"/>
-      </list>
+      <hash n="profileDefinitions"/>
+      <list n="profileList"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">
@@ -174,7 +137,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="AbsoluteLayout"/>
+            <value n="id" v="AbsoluteLayout.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -182,11 +145,20 @@
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url path="../../mysql-connector-j-8.4.0/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar" jar-entry=""/>
+                  <url path="src/mysql-connector-j-8.4.0.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Mysql-connector-j-8.4.0.jar"/>
                <value n="id" v="Mysql-connector-j-8.4.0.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="src/AbsoluteLayout.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="AbsoluteLayout.jar"/>
+               <value n="id" v="AbsoluteLayout.jar"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
@@ -197,7 +169,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="AbsoluteLayout"/>
+            <value n="id" v="AbsoluteLayout.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

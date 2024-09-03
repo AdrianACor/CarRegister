@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Propietarios extends javax.swing.JPanel {
     
-    Conexion conectar = new Conexion();
+    Connection conectar = Conexion.Conectar();
     Principal princ;
     Connection conect;
     DefaultTableModel modelo;
@@ -31,7 +31,7 @@ public class Propietarios extends javax.swing.JPanel {
     public Propietarios(Principal principal) {
         initComponents();
         this.princ = principal;
-        /* consultar(); */
+        
     }
     
     /** This method is called from within the constructor to
@@ -96,8 +96,8 @@ public class Propietarios extends javax.swing.JPanel {
     public void consultar(){
         String sql = "select * from propietario";
         try{
-            conect = conectar.getConnection();
-            st = conect.createStatement();
+            /* conect = conectar.Conectar(); */
+            st = conectar.createStatement();
             rs = st.executeQuery(sql);
             
             Object[] propietario = new Object[6];
@@ -120,10 +120,7 @@ public class Propietarios extends javax.swing.JPanel {
                 
                 modelo.addRow(propietario);
             }
-            /*TblPropietarios.setModel(modelo); */
-             st.close();
-            /*conect.close();
-            conectar.desconectar();*/
+           
         }catch(Exception e){
             System.out.println("Ocurrio un error: "+e);
         }
@@ -133,8 +130,8 @@ public class Propietarios extends javax.swing.JPanel {
         String queryBusqueda = "Select * From propietario Where "+ filter +" like "+ "'%"+valorBusqueda+"%'";
         JTable tblBusquedaProp = new JTable(); 
         try{
-            conect = conectar.getConnection();
-            st = conect.createStatement();
+            
+            st = conectar.createStatement();
             rs = st.executeQuery(queryBusqueda);
             
             Object[] propietario = new Object[6];
@@ -158,9 +155,7 @@ public class Propietarios extends javax.swing.JPanel {
                 modelo.addRow(propietario);
             }
             TblPropietarios.setModel(modelo); 
-            /* st.close(); */
-            /* conect.close();
-            conectar.desconectar(); */
+            
         }catch(Exception e){
             System.out.println("Ocurrio un error: "+e);
         }
@@ -170,7 +165,7 @@ public class Propietarios extends javax.swing.JPanel {
         DefaultTableModel modeloID;
         ResultSetMetaData metaDataID;
         String filtroOR = "";
-        /* JTable TblPropietarios = new javax.swing.JTable(); */
+        
         if(idCliente.size()>1){
             for(int ids : idCliente){
                 filtroOR = " OR idCliente ="+ids;
@@ -179,8 +174,8 @@ public class Propietarios extends javax.swing.JPanel {
         String queryBusquedaProp = "Select * From propietario Where IdCliente = "+idCliente.get(0)+filtroOR;
         JTable tblBusquedaProp = new JTable(); 
         try{
-            conect = conectar.getConnection();
-            st = conect.createStatement();
+            
+            st = conectar.createStatement();
             rs = st.executeQuery(queryBusquedaProp);
             
             Object[] propietario = new Object[6];
@@ -204,9 +199,7 @@ public class Propietarios extends javax.swing.JPanel {
                 modeloID.addRow(propietario);
             }
             TblPropietarios.setModel(modeloID); 
-            /* st.close(); */
-            /* conect.close();
-            conectar.desconectar(); */
+
         }catch(Exception e){
             System.out.println("Ocurrio un error: "+e);
         }

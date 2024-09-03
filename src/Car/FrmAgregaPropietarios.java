@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
  * @author vacio
  */
 public class FrmAgregaPropietarios extends javax.swing.JFrame {
-    Conexion connInsert = new Conexion();
-    Connection conectInsert;
+    
+    Connection conectInsert = Conexion.Conectar();
     Statement stInsert;
     Principal princ;
     
@@ -261,14 +261,11 @@ public class FrmAgregaPropietarios extends javax.swing.JFrame {
     
     public void insertPropietario(String Nombre, String ApPaterno, String ApMaterno, String Direccion,String Telefono){
         
-        /* JOptionPane.showMessageDialog(null, "Nombre: "+Nombre+" ApPaterno: "+ApPaterno+" ApMaterno: "+ ApMaterno+" Direccion: "+
-                                            Direccion+" Telefono: "+Telefono); */
         String query = "INSERT INTO propietario(Nombre, Apellido_Paterno, Apellido_Materno, Direccion,Telefono)" +
             "VALUES('"+Nombre+"','"+ApPaterno+"','"+ApMaterno+"','"+Direccion+"','"+Telefono+"');";
 
         try {
-            
-            conectInsert = connInsert.getConnection();
+           
             PreparedStatement execQuery = conectInsert.prepareStatement(query);
             execQuery.executeUpdate();
             

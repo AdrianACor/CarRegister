@@ -14,8 +14,7 @@ import javax.swing.table.DefaultTableModel;
  * @author vacio
  */
 public class PrincipalPruebaConexion extends javax.swing.JFrame {
-    Conexion conectar = new Conexion();
-    Connection conect;
+    Connection conectar = Conexion.Conectar();
     DefaultTableModel modelo;
     Statement st;
     ResultSet rs;
@@ -173,8 +172,8 @@ public class PrincipalPruebaConexion extends javax.swing.JFrame {
     public void consultar(){
         String sql = "select * from propietario";
         try{
-            conect = conectar.getConnection();
-            st = conect.createStatement();
+
+            st = conectar.createStatement();
             rs = st.executeQuery(sql);
             
             Object[] propietario = new Object[6];

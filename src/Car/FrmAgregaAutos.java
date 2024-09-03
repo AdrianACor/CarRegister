@@ -19,8 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class FrmAgregaAutos extends javax.swing.JFrame {
     
-    Conexion connInsertAuto = new Conexion();
-    Connection conectInsertAuto;
+    Connection conectInsertAuto = Conexion.Conectar();
     Statement stInsertAuto;
     Principal princ;
     int IdCliente = 0;
@@ -256,14 +255,11 @@ public class FrmAgregaAutos extends javax.swing.JFrame {
     
     public void insertAuto(int IdCliente,String Placas, String Marca, String modelo, String Año,String Color){
         
-        /* JOptionPane.showMessageDialog(null,"idCliente: "+IdCliente+ " Placas: "+Placas+" Marca: "+Marca+" modelo: "+ modelo+" Año: "+
-                                            Año+" Color: "+Color); */
-        String query = "INSERT INTO Automovil(IdCliente, Placas, Marca, modelo, Año,Color)" +
+        String query = "INSERT INTO automovil(IdCliente, Placas, Marca, modelo, Año,Color)" +
             "VALUES("+IdCliente+",'"+Placas+"','"+Marca+"','"+modelo+"','"+Año+"','"+Color+"');";
 
         try {
-            
-            conectInsertAuto = connInsertAuto.getConnection();
+
             PreparedStatement execQuery = conectInsertAuto.prepareStatement(query);
             execQuery.executeUpdate();
             

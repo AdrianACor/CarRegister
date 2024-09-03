@@ -23,8 +23,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Autos extends javax.swing.JPanel {
     
-    Conexion conectar = new Conexion();
-    Connection conect;
+    Connection conectar = Conexion.Conectar();
     Principal princ;
     DefaultTableModel modelo;
     ResultSetMetaData metaData;
@@ -36,7 +35,7 @@ public class Autos extends javax.swing.JPanel {
     public Autos(Principal principal) {
         initComponents();
         this.princ = principal;
-        /* consultar(clientID); */
+
     }
 
     /** This method is called from within the constructor to
@@ -124,8 +123,8 @@ public class Autos extends javax.swing.JPanel {
         this.clienteID = clientID;
         String sql = "select * from automovil where idCliente = "+clientID;
         try{
-            conect = conectar.getConnection();
-            st = conect.createStatement();
+
+            st = conectar.createStatement();
             rs = st.executeQuery(sql);
             
             Object[] autos = new Object[7];
@@ -155,8 +154,7 @@ public class Autos extends javax.swing.JPanel {
                 modelo.addRow(autos);
             }
             this.princ.jlBack.setVisible(true);
-            /* st.close();
-            conect.close(); */
+
         }catch(Exception e){
             System.out.println("Ocurrio un error: "+e);
         }
@@ -173,8 +171,8 @@ public class Autos extends javax.swing.JPanel {
             sql = "select * from automovil where idCliente = "+valorBusqueda;
         }
         try{
-            conect = conectar.getConnection();
-            st = conect.createStatement();
+            
+            st = conectar.createStatement();
             rs = st.executeQuery(sql);
             
             Object[] autos = new Object[7];
@@ -207,8 +205,7 @@ public class Autos extends javax.swing.JPanel {
             this.princ.jLAddAutos.setVisible(true);
             this.princ.jlBack.setVisible(true);
             return idCliente;
-            /* st.close();
-            conect.close(); */
+
         }catch(Exception e){
             System.out.println("Ocurrio un error: "+e);
         }
