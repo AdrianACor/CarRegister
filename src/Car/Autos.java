@@ -205,7 +205,7 @@ public class Autos extends javax.swing.JPanel {
             this.princ.jLAddAutos.setVisible(true);
             this.princ.jlBack.setVisible(true);
             return idCliente;
-
+ 
         }catch(Exception e){
             System.out.println("Ocurrio un error: "+e);
         }
