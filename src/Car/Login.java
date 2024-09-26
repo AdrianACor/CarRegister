@@ -278,7 +278,7 @@ public class Login extends javax.swing.JFrame {
                }
             }
         }catch(Exception e){
-            System.out.println("Ocurrio un error: "+e);
+            JOptionPane.showMessageDialog(null, "Error: "+e);
         }
              
      return usuarioExistente;   
