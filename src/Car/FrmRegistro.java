@@ -52,7 +52,7 @@ public class FrmRegistro extends javax.swing.JFrame {
         jTConfPassword = new javax.swing.JPasswordField();
         jCBShowContra = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CarRegister");
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
