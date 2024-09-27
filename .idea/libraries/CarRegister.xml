@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CarRegister">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/deploy/CarRegister.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

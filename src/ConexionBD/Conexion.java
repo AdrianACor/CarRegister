@@ -35,7 +35,8 @@ public class Conexion {
                 } */
             }
             catch(Exception e){
-                System.out.println("Error al conectar: " + e);
+                /* System.out.println("Error al conectar: " + e); */
+                JOptionPane.showMessageDialog(null, "Error: "+e);
             }
         }
         return conn;
@@ -44,13 +45,13 @@ public class Conexion {
     /**
      * @return
      */
-    public static Conexion getInstance(){
+    /*  public static Conexion getInstance(){
         
         if(instancia == null){
             instancia = new Conexion();
         }
         return instancia;
-    }
+    } */
 
     /**
      * @throws SQLException
@@ -60,7 +61,7 @@ public class Conexion {
             conn.close();
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error: "+e);
+            System.out.println("Error al conectar: " + e);
             conn.close();
         }finally{
             conn.close();    

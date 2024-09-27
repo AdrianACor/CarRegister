@@ -19,8 +19,9 @@ import javax.swing.JOptionPane;
  * @author vacio
  */
 public class Login extends javax.swing.JFrame {
-    Connection conectInsertUsuario = Conexion.Conectar();
-    Statement stInsertUsuario;
+    Connection conectLogin = Conexion.Conectar();
+    Statement stLogin;
+    ResultSet rsLogin;
     
     /** Creates new form Login */
     public Login() {
@@ -258,19 +259,17 @@ public class Login extends javax.swing.JFrame {
     
     public Boolean buscaUsuario(String usuario, String password){
      Boolean usuarioExistente = false;
-     Statement st;
-     ResultSet rs;
      String pass = "";
      
      String query = "select * from usuarios where usuario = '"+usuario+"' or  correo = '"+usuario+"'";
      
         try{
 
-            st = conectInsertUsuario.createStatement();
-            rs = st.executeQuery(query);
+            stLogin = conectLogin.createStatement();
+            rsLogin = stLogin.executeQuery(query);
             
-           while(rs.next()){
-                 byte[] decodedBytes = Base64.getDecoder().decode(rs.getString(4));
+           while(rsLogin.next()){
+                 byte[] decodedBytes = Base64.getDecoder().decode(rsLogin.getString(4));
                  pass = new String(decodedBytes);
                 
                if(pass.equals(password)){
@@ -278,7 +277,7 @@ public class Login extends javax.swing.JFrame {
                }
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error: "+e);
+            System.out.println("Error al conectar: " + e);
         }
              
      return usuarioExistente;   
